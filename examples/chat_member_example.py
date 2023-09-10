@@ -8,7 +8,7 @@ bot = telebot.TeleBot("token")
 def chat_m(message: types.ChatMemberUpdated):
     old = message.old_chat_member
     new = message.new_chat_member
-    if new.status == "member":
+    if new.status in ("member", "restricted"):
         bot.send_message(message.chat.id,"Hello {name}!".format(name=new.user.first_name)) # Welcome message
 
 #if bot is added to group, this handler will work
